@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "outlabs-auth-docs-staging",
+  "account_id": "4422ae79e1cc08b6163fc541a3f3c418",
+  "compatibility_date": "2026-04-01",
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "auth-staging.outlabs.io",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./.output/public",
+    "not_found_handling": "404-page"
+  }
+}
