@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://auth.outlabs.io/sitemap.xml

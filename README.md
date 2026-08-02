@@ -56,6 +56,12 @@ The port script **skips** hand-crafted pages listed in `SKIP`.
 - `content/index.md` — landing
 - `public/outlabsAuthLogo.svg` — header + hero wordmark
 
+## Analytics
+
+Umami is loaded from `https://analytics.outlabs.io` via `app.head.script` in
+`nuxt.config.ts` (production builds only). No extra SPA wiring is required —
+Umami watches client-side route changes on its own.
+
 ## Deployment
 
 Same Cloudflare Workers + static assets pattern as `outlabs-site` (Wrangler custom domains).

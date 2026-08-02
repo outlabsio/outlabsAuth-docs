@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://auth.outlabs.io</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/abac/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/jwt-tokens/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/multi-frontend/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/oauth-and-social-login/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/passwordless-and-messaging/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/roles-and-permissions/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/sessions-and-audit/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/user-invitations/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/user-management-api/</loc></url>
+  <url><loc>https://auth.outlabs.io/auth/user-status/</loc></url>
+  <url><loc>https://auth.outlabs.io/build/authorization-dependencies/</loc></url>
+  <url><loc>https://auth.outlabs.io/build/configuration/</loc></url>
+  <url><loc>https://auth.outlabs.io/build/routers-and-prefixes/</loc></url>
+  <url><loc>https://auth.outlabs.io/enterprise/core-authorization-concepts/</loc></url>
+  <url><loc>https://auth.outlabs.io/enterprise/entities/</loc></url>
+  <url><loc>https://auth.outlabs.io/enterprise/entity-memberships/</loc></url>
+  <url><loc>https://auth.outlabs.io/getting-started/choosing-a-preset/</loc></url>
+  <url><loc>https://auth.outlabs.io/getting-started/deployment/</loc></url>
+  <url><loc>https://auth.outlabs.io/getting-started/getting-started/</loc></url>
+  <url><loc>https://auth.outlabs.io/getting-started/introduction/</loc></url>
+  <url><loc>https://auth.outlabs.io/integrations/api-keys/</loc></url>
+  <url><loc>https://auth.outlabs.io/integrations/outlabsauth-ui/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/activity-tracking/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/data-models/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/log-events-reference/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/metrics-reference/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/observability/</loc></url>
+  <url><loc>https://auth.outlabs.io/reference/testing/</loc></url>
+</urlset>
