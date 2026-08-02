@@ -5,7 +5,17 @@ const { footer } = useAppConfig()
 <template>
   <UFooter>
     <template #left>
-      {{ footer.credits }}
+      <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <span>{{ footer.credits }}</span>
+        <span aria-hidden="true">·</span>
+        <ULink
+          to="https://github.com/outlabsio/outlabsAuth/blob/main/LICENSE"
+          target="_blank"
+          class="font-medium text-primary hover:underline"
+        >
+          MIT License
+        </ULink>
+      </div>
     </template>
 
     <template #right>

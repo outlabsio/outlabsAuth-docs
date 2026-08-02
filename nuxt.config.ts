@@ -16,15 +16,22 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
-
-  // Fonts via @nuxt/fonts (registered by Nuxt UI) — families referenced in CSS
-  fonts: {
-    families: [
-      { name: 'DM Sans', provider: 'google', weights: [400, 500, 600, 700] },
-      { name: 'Fraunces', provider: 'google', weights: [500, 600, 700] }
-    ]
+  // Umami (self-hosted). Only inject on production builds so local `nuxt dev`
+  // does not pollute auth.outlabs.io analytics. SPA navigations are tracked
+  // automatically by the Umami script via the History API.
+  app: {
+    head: {
+      script: process.env.NODE_ENV === 'production'
+        ? [{
+            'src': 'https://analytics.outlabs.io/script.js',
+            'defer': true,
+            'data-website-id': 'f883bacb-b746-4036-9ece-187a0d84513e'
+          }]
+        : []
+    }
   },
+
+  css: ['~/assets/css/main.css'],
 
   site: {
     url: siteUrl,
@@ -41,6 +48,12 @@ export default defineNuxtConfig({
     },
     experimental: {
       sqliteConnector: 'native'
+    }
+  },
+
+  runtimeConfig: {
+    public: {
+      siteUrl
     }
   },
 
@@ -67,6 +80,14 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  // Fonts via @nuxt/fonts (registered by Nuxt UI) — families referenced in CSS
+  fonts: {
+    families: [
+      { name: 'DM Sans', provider: 'google', weights: [400, 500, 600, 700] },
+      { name: 'Fraunces', provider: 'google', weights: [500, 600, 700] }
+    ]
   },
 
   llms: {

@@ -39,7 +39,7 @@ export default defineAppConfig({
     }]
   },
   footer: {
-    credits: `OutlabsAuth Docs • © ${new Date().getFullYear()} OutLabs`,
+    credits: `© ${new Date().getFullYear()} OutLabs LLC`,
     colorMode: false,
     links: [{
       'icon': 'i-simple-icons-github',

@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt generate",
-    "build:production": "NUXT_SITE_URL=https://auth.outlabs.io nuxt generate",
-    "build:staging": "NUXT_SITE_URL=https://auth-staging.outlabs.io nuxt generate",
+    "seo:generate": "bun scripts/generate-seo.mjs",
+    "build": "bun run seo:generate && nuxt generate",
+    "build:production": "NUXT_SITE_URL=https://auth.outlabs.io bun run seo:generate && NUXT_SITE_URL=https://auth.outlabs.io nuxt generate",
+    "build:staging": "NUXT_SITE_URL=https://auth-staging.outlabs.io bun run seo:generate && NUXT_SITE_URL=https://auth-staging.outlabs.io nuxt generate",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
