@@ -34,6 +34,7 @@ SKIP = {
 PAGES: list[tuple[str, str, str, str, str]] = [
     ("02-Routers-and-Prefixes.md", "2.build/1.routers-and-prefixes.md", "Routers & Prefixes", "Which get_*_router factories to mount and how prefixes work.", "i-lucide-route"),
     ("03-Configuration.md", "2.build/2.configuration.md", "Configuration", "Secrets, schema, Redis, cache backends, and CLI.", "i-lucide-settings"),
+    ("09-Background-Maintenance.md", "1.getting-started/5.background-maintenance.md", "Background Maintenance", "Run cleanup and sync work safely outside FastAPI processes.", "i-lucide-timer-reset"),
     ("04-OAuth-and-Social-Login.md", "3.auth/1.oauth-and-social-login.md", "OAuth & Social Login", "Provider routers, invite-only login, link and unlink.", "i-lucide-log-in"),
     ("05-Sessions-and-Audit.md", "3.auth/2.sessions-and-audit.md", "Sessions & Audit", "Active sessions and user audit search.", "i-lucide-monitor-smartphone"),
     ("06-Passwordless-and-Messaging.md", "3.auth/3.passwordless-and-messaging.md", "Passwordless & Messaging", "Magic links, access codes, and host-owned delivery.", "i-lucide-mail"),
