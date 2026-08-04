@@ -97,6 +97,12 @@ const docs = [
     description: 'Use the current authentication, permission, entity, tree, and two-phase dependency APIs.',
     icon: 'i-lucide-shield-check',
     to: '/build/authorization-dependencies'
+  },
+  {
+    title: 'Operate without a UI',
+    description: 'Administer users, policy, credentials, sessions, and audit from a terminal or coding agent.',
+    icon: 'i-lucide-terminal',
+    to: '/build/cli'
   }
 ]
 

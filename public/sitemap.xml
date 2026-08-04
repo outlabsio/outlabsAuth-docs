@@ -12,6 +12,7 @@
   <url><loc>https://auth.outlabs.io/auth/user-management-api/</loc></url>
   <url><loc>https://auth.outlabs.io/auth/user-status/</loc></url>
   <url><loc>https://auth.outlabs.io/build/authorization-dependencies/</loc></url>
+  <url><loc>https://auth.outlabs.io/build/cli/</loc></url>
   <url><loc>https://auth.outlabs.io/build/configuration/</loc></url>
   <url><loc>https://auth.outlabs.io/build/routers-and-prefixes/</loc></url>
   <url><loc>https://auth.outlabs.io/enterprise/core-authorization-concepts/</loc></url>

@@ -27,8 +27,8 @@ Hand-crafted exemplars (preferred over blind port):
 - `content/2.build/1.routers-and-prefixes.md`
 - `content/5.integrations/2.outlabsauth-ui.md`
 
-Other pages are generated from `../outlabsAuth/docs-library/` and then edited
-toward the same MDC style over time.
+Other pages are generated from an outlabsAuth checkout's `docs-library/` and
+then edited toward the same MDC style over time.
 
 ## Setup
 
@@ -44,9 +44,16 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 bun run port:handbook
 # or: python3 scripts/port_handbook.py
+
+# Port from another checkout or worktree before it is merged:
+bun run port:handbook -- --source ../outlabsAuth-cli --only 10-Command-Line.md
+# equivalent:
+OUTLABS_AUTH_SOURCE=../outlabsAuth-cli bun run port:handbook -- --only 10-Command-Line.md
 ```
 
-The port script **skips** hand-crafted pages listed in `SKIP`.
+The source defaults to sibling `../outlabsAuth`. The port script **skips**
+hand-crafted pages listed in `SKIP`. Repeat `--only SOURCE_FILE` to refresh a
+small set of generated pages without rewriting the rest of the handbook.
 
 ## Branding
 

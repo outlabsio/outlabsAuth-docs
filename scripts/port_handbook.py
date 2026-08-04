@@ -10,15 +10,21 @@ Follows Nuxt UI docs template patterns:
 
 Re-run after handbook edits:
   python3 scripts/port_handbook.py
+  python3 scripts/port_handbook.py --source ../outlabsAuth-cli --only 10-Command-Line.md
+
+`--source` accepts an outlabsAuth checkout (or its docs-library directory).
+`OUTLABS_AUTH_SOURCE` provides the same override for package scripts and CI.
 """
 
 from __future__ import annotations
 
+import argparse
+import os
 import re
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC = REPO_ROOT.parent / "outlabsAuth" / "docs-library"
+DEFAULT_SOURCE = REPO_ROOT.parent / "outlabsAuth"
 DST = REPO_ROOT / "content"
 
 # SKIP hand-crafted Nuxt-style pages
@@ -35,6 +41,7 @@ PAGES: list[tuple[str, str, str, str, str]] = [
     ("02-Routers-and-Prefixes.md", "2.build/1.routers-and-prefixes.md", "Routers & Prefixes", "Which get_*_router factories to mount and how prefixes work.", "i-lucide-route"),
     ("03-Configuration.md", "2.build/2.configuration.md", "Configuration", "Secrets, schema, Redis, cache backends, and CLI.", "i-lucide-settings"),
     ("09-Background-Maintenance.md", "1.getting-started/5.background-maintenance.md", "Background Maintenance", "Run cleanup and sync work safely outside FastAPI processes.", "i-lucide-timer-reset"),
+    ("10-Command-Line.md", "2.build/4.cli.md", "Command Line", "Operate OutlabsAuth without a UI, from a terminal or coding agent.", "i-lucide-terminal"),
     ("04-OAuth-and-Social-Login.md", "3.auth/1.oauth-and-social-login.md", "OAuth & Social Login", "Provider routers, invite-only login, link and unlink.", "i-lucide-log-in"),
     ("05-Sessions-and-Audit.md", "3.auth/2.sessions-and-audit.md", "Sessions & Audit", "Active sessions and user audit search.", "i-lucide-monitor-smartphone"),
     ("06-Passwordless-and-Messaging.md", "3.auth/3.passwordless-and-messaging.md", "Passwordless & Messaging", "Magic links, access codes, and host-owned delivery.", "i-lucide-mail"),
@@ -100,6 +107,9 @@ ALIASES = {
     "../docs/TESTING_GUIDE.md": "/reference/testing",
     "../docs/LIBRARY_ARCHITECTURE.md": "/enterprise/core-authorization-concepts",
     "../docs/API_KEY_SCOPE_AND_GRANT_POLICY_EPIC.md": "/integrations/api-keys",
+    "../docs/CLI_DESIGN.md": "https://github.com/outlabsio/outlabsAuth/blob/main/docs/CLI_DESIGN.md",
+    "../docs/CLI_AGENT_GUIDE.md": "https://github.com/outlabsio/outlabsAuth/blob/main/docs/CLI_AGENT_GUIDE.md",
+    "../docs/CLI_MANIFEST.md": "https://github.com/outlabsio/outlabsAuth/blob/main/docs/CLI_MANIFEST.md",
     "../docs/WHATSAPP_ACCOUNT_MESSAGING.md": "/auth/passwordless-and-messaging",
     "../docs/PRIVATE_RELEASE.md": "/reference/testing",
     "../examples/": "https://github.com/outlabsio/outlabsAuth/tree/main/examples",
@@ -192,11 +202,11 @@ def tidy_code_fences(body: str) -> str:
     return body
 
 
-def write_page(src_name: str, dest_rel: str, title: str, description: str, icon: str) -> None:
+def write_page(source: Path, src_name: str, dest_rel: str, title: str, description: str, icon: str) -> None:
     if src_name in SKIP:
         print(f"skip (hand-crafted) {src_name}")
         return
-    src = SRC / src_name
+    src = source / src_name
     text = src.read_text()
     body = strip_h1(text)
     body = banner_to_note(body)
@@ -241,10 +251,48 @@ def write_ui_page() -> None:
     )
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Port the outlabsAuth implementer handbook into Nuxt Content."
+    )
+    parser.add_argument(
+        "--source",
+        type=Path,
+        default=Path(os.environ.get("OUTLABS_AUTH_SOURCE", DEFAULT_SOURCE)),
+        help="outlabsAuth checkout or docs-library directory (default: sibling outlabsAuth)",
+    )
+    parser.add_argument(
+        "--only",
+        action="append",
+        choices=[page[0] for page in PAGES],
+        metavar="SOURCE_FILE",
+        help="port only this handbook page; repeat for more than one page",
+    )
+    return parser.parse_args()
+
+
+def resolve_source(source: Path) -> Path:
+    source = source.expanduser().resolve()
+    handbook = source if source.name == "docs-library" else source / "docs-library"
+    if not handbook.is_dir():
+        raise SystemExit(
+            f"handbook source not found: {handbook} "
+            "(pass --source or set OUTLABS_AUTH_SOURCE)"
+        )
+    return handbook
+
+
 def main() -> None:
+    args = parse_args()
+    source = resolve_source(args.source)
+    print(f"source {source}")
     write_nav()
-    for item in PAGES:
-        write_page(*item)
+    selected = PAGES
+    if args.only:
+        requested = set(args.only)
+        selected = [item for item in PAGES if item[0] in requested]
+    for item in selected:
+        write_page(source, *item)
     write_ui_page()
     print("done")
 
