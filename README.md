@@ -30,6 +30,17 @@ Hand-crafted exemplars (preferred over blind port):
 Other pages are generated from an outlabsAuth checkout's `docs-library/` and
 then edited toward the same MDC style over time.
 
+`content/5.integrations/2.outlabsauth-ui.md` summarises the
+[OutlabsAuthUI README](https://github.com/outlabsio/OutlabsAuthUI#readme)
+(quick start, configuration, building and deploying). When the console changes
+its config keys, dev port, sign-in options or deploy flow, update that page and
+the OutlabsAuth UI step in `content/1.getting-started/2.getting-started.md`
+from the README; pages that only link to the console need no change.
+
+Generated pages are not kept in lockstep with `docs-library/`: some carry
+site-only edits. Port with `--only` for the page you changed and review the
+diff instead of re-porting everything.
+
 ## Setup
 
 ```bash
