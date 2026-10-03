@@ -98,6 +98,7 @@ ALIASES = {
     "README.md": "/getting-started/introduction",
     "./README.md": "/getting-started/introduction",
     "../docs/AUTH_UI.md": "/integrations/outlabsauth-ui",
+    "../docs/MULTI_FRONTEND_SUPPORT.md": "/auth/multi-frontend",
     "../docs/COMPARISON_MATRIX.md": "/getting-started/choosing-a-preset",
     "../docs/API_DESIGN.md": "https://github.com/outlabsio/outlabsAuth/blob/main/docs/API_DESIGN.md",
     "../docs/DEPLOYMENT_GUIDE.md": "/getting-started/deployment",
