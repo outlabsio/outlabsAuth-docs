@@ -75,6 +75,12 @@ const capabilities = [
 
 const docs = [
   {
+    title: 'Use Auth, Auth UI and TaskQ together',
+    description: 'Connect identity, administration, worker permissions and scheduled jobs.',
+    icon: 'i-lucide-workflow',
+    to: '/integrations/taskq'
+  },
+  {
     title: 'Install in one sitting',
     description: 'Package, migrations, configuration, and your first mounted auth router.',
     icon: 'i-lucide-rocket',
