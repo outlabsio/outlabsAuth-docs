@@ -50,6 +50,15 @@ bun run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Published documentation target
+
+The public handbook targets `outlabs-auth==0.1.0a37`. Refresh generated pages
+from the published tag, not an unreleased development checkout. Preserve the
+hand-crafted quickstart, deployment, multi-frontend and console guides; they
+need a separate review against the published contract. Validate with
+`bun run lint`, `bun run typecheck`, and `bun run build:production` before
+deployment, then check internal links and the generated HTML.
+
 ## Refresh generated pages
 
 ```bash
