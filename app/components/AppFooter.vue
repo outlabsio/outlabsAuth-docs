@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { footer } = useAppConfig()
+const { footer, relatedDocs } = useAppConfig()
 </script>
 
 <template>
@@ -17,6 +17,20 @@ const { footer } = useAppConfig()
         </ULink>
       </div>
     </template>
+
+    <nav
+      aria-label="Outlabs documentation"
+      class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm"
+    >
+      <ULink
+        v-for="link in relatedDocs"
+        :key="link.to"
+        :to="link.to"
+        class="font-medium text-primary hover:underline"
+      >
+        {{ link.label }}
+      </ULink>
+    </nav>
 
     <template #right>
       <UColorModeButton v-if="footer?.colorMode" />

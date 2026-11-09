@@ -53,11 +53,16 @@ export default defineAppConfig({
       'aria-label': 'PyPI'
     }]
   },
+  relatedDocs: [
+    { label: 'Outlabs Auth', to: 'https://auth.outlabs.io/' },
+    { label: 'Auth UI', to: 'https://auth.outlabs.io/integrations/outlabsauth-ui/' },
+    { label: 'TaskQ', to: 'https://taskq.outlabs.io/' }
+  ],
   toc: {
     title: 'On this page',
     bottom: {
       title: 'Resources',
-      edit: 'https://github.com/outlabsio/outlabsAuth/edit/main/docs-library',
+      edit: 'https://github.com/outlabsio/outlabsAuth-docs/edit/main/content',
       links: [{
         icon: 'i-lucide-package',
         label: 'PyPI package',
@@ -65,9 +70,16 @@ export default defineAppConfig({
         target: '_blank'
       }, {
         icon: 'i-lucide-layout-dashboard',
-        label: 'OutlabsAuth UI',
-        to: 'https://github.com/outlabsio/OutlabsAuthUI',
-        target: '_blank'
+        label: 'Auth UI guide',
+        to: '/integrations/outlabsauth-ui'
+      }, {
+        icon: 'i-lucide-workflow',
+        label: 'Use Auth with TaskQ',
+        to: '/integrations/taskq'
+      }, {
+        icon: 'i-lucide-book-open',
+        label: 'TaskQ docs',
+        to: 'https://taskq.outlabs.io/'
       }]
     }
   }
